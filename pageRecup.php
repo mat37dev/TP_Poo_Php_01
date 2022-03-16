@@ -1,5 +1,6 @@
 <?php
 include 'lib/Jeu.class.php';
+include 'lib/TrancheAge.class.php';
 session_start();
 ?>
 <!doctype html>
