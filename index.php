@@ -1,5 +1,6 @@
 <?php
 include 'lib/Jeu.class.php';
+include 'lib/TrancheAge.class.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,16 +16,8 @@ include 'lib/Jeu.class.php';
     <h2 class="m-3">La Programmation Objet en Php </h2>
 <form action="pageRecup.php" method = "POST">
     <div class="mb-3">
-        <label for="numero" class="form-label">Numéro : </label>
-        <input type="text" class="form-control" id="numero" name="numero" >
-    </div>
-    <div class="mb-3">
-        <label for="libelle" class="form-label">Libellé : </label>
-        <input type="text" class="form-control" id="libelle" name="libelle" >
-    </div>
-    <div class="mb-3">
-        <label for="categorie" class="form-label">Catégorie : </label>
-        <input type="text" class="form-control" id="categorie" name="categorie" >
+        <label for="tranche" class="form-label">Code de la tranche : </label>
+        <input type="text" class="form-control" id="tranche" name="tranche" >
     </div>
     <div class="mb-3">
         <label for="agemin" class="form-label">Age Minimum : </label>
@@ -46,14 +39,11 @@ include 'lib/Jeu.class.php';
         <?php
         if(!empty($_POST['valider']))
         {
+            $tranch = new TrancheAge(htmlspecialchars($_POST['tranche']),intval($_POST['agemin']), intval($_POST['agemax']));
+            /*
             $jeu= new Jeu(intval($_POST['numero']), htmlspecialchars($_POST['libelle']),
-                htmlspecialchars($_POST['categorie']), intval($_POST['agemin']), intval($_POST['agemax']));
-            echo "objet n°".$jeu->getNumero().":".$jeu->getLibelle();
-
-        }
-        else
-        {
-            echo "pas encore créé";
+                htmlspecialchars($_POST['categorie']), );
+            echo "objet n°".$tranch->getCode().":".$tranch->getLibelle();*/
         }
         ?>
     </h6>
