@@ -14,10 +14,12 @@ session_start();
 </head>
 <body>
 <?php
+
 $jeu = null;
-if(!empty($_POST['valider'])){
+if(!empty($_POST['validerJ'])){
+    $tranche = $_SESSION['tranche'];
     $jeu= new Jeu(intval($_POST['numero']), htmlspecialchars($_POST['libelle']),
-        htmlspecialchars($_POST['categorie']), intval($_POST['agemin']), intval($_POST['agemax']));
+        htmlspecialchars($_POST['categorie']), $tranche);
     $_SESSION['jeu']=$jeu;
 }
 if(!empty($_POST['controle'])){
@@ -47,15 +49,16 @@ if(!empty($_POST['controle'])){
         </div>
         <div class="row">
             <button class="btn btn-primary" type="submit" name="controle" id="controle"
-                    value="controler">Controler</button>
+                    value="controle">Controler</button>
         </div>
         <p class="lead" >
         <h4 id="result" name="result">
             <?php
+
             if(!empty($_POST['controle']))
             {
                 $ageDem = $_POST['ageDem'];
-                if($ageDem >= $jeu->getAgeMini() && $ageDem<=$jeu->getAgeMax()){
+                if($ageDem >= $jeu->getTrancheAge()->getAgeMini() && $ageDem<=$jeu->getTrancheAge()->getAgeMax()){
                     echo $ageDem." ans: jeu autorisé";
                 }
                 else

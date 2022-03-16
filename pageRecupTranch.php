@@ -56,7 +56,9 @@ if(!empty($_POST['valider'])){
     </form>
     <p class="lead" >
     <h6 id="result" name="result">
+
         <?php
+        /*
         $jeu = null;
         if(!empty($_POST['validerJ']))
         {
@@ -65,9 +67,7 @@ if(!empty($_POST['valider'])){
                 htmlspecialchars($_POST['categorie']), $tranche);
             $_SESSION['jeu'] = $jeu;
         }
-        if(!empty($_POST['controle'])){
-
-        }
+        */
         ?>
     </h6>
     </p>
