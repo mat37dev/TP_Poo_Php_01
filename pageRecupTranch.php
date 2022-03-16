@@ -41,21 +41,34 @@ if(!empty($_POST['valider'])){
         </div>
         <div class="mb-3">
             <label for="libelle" class="form-label">Libellé : </label>
-            <input type="number"
+            <input type="text"
                    class="form-control" id="libelle" name="libelle">
         </div>
         <div class="mb-3">
             <label for="categorie" class="form-label">Catégorie : </label>
-            <input type="number"
+            <input type="text"
                    class="form-control" id="categorie" name="categorie">
         </div>
         <div class="row">
-            <button type="submit" class="btn btn-info" name="valider" id="valider"
-                    value="valider" > Valider le Jeu</button>
+            <button type="submit" class="btn btn-info" name="validerJ" id="validerJ"
+                    value="validerJ" > Valider le Jeu</button>
         </div>
     </form>
     <p class="lead" >
     <h6 id="result" name="result">
+        <?php
+        $jeu = null;
+        if(!empty($_POST['validerJ']))
+        {
+            $tranche = $_SESSION['tranche'];
+            $jeu= new Jeu(intval($_POST['numero']), htmlspecialchars($_POST['libelle']),
+                htmlspecialchars($_POST['categorie']), $tranche);
+            $_SESSION['jeu'] = $jeu;
+        }
+        if(!empty($_POST['controle'])){
+
+        }
+        ?>
     </h6>
     </p>
 </div>
