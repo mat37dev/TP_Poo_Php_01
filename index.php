@@ -14,7 +14,7 @@ include 'lib/TrancheAge.class.php';
 <body>
 <div class="container">
     <h2 class="m-3">La Programmation Objet en Php </h2>
-<form action="pageRecup.php" method = "POST">
+<form action="pageRecupTranch.php" method = "POST">
     <div class="mb-3">
         <label for="tranche" class="form-label">Code de la tranche : </label>
         <input type="text" class="form-control" id="tranche" name="tranche" >

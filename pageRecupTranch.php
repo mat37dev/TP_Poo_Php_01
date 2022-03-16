@@ -3,7 +3,9 @@ session_start();
 include 'lib/Jeu.class.php';
 include 'lib/TrancheAge.class.php';
 if(!empty($_POST['valider'])){
-    $tranche = new TrancheAge(htmlspecialchars($_POST['tranche']),intval($_POST['agemin']),intval($_POST['agemax']));
+    $tranche = new TrancheAge(htmlspecialchars($_POST['tranche']),
+        intval($_POST['agemin']),intval($_POST['agemax']));
+    $_SESSION['tranche'] = $tranche;
 }
 ?>
 <!doctype html>
@@ -21,15 +23,15 @@ if(!empty($_POST['valider'])){
     <form action="pageRecup.php" method = "POST">
         <div class="mb-3">
             <label for="codetranche" class="form-label">Code de la Tranche : </label>
-            <input type="text" class="form-control" id="codetranche" name="codetranche" disabled>
+            <input type="text" class="form-control" id="codetranche" name="codetranche" disabled value="<?php echo $tranche->getCode()?>">
         </div>
         <div class="mb-3">
             <label for="agemin" class="form-label">Age Minimum : </label> <?php  ?>
-            <input type="text" class="form-control" id="agemin" name="agemin" disabled>
+            <input type="text" class="form-control" id="agemin" name="agemin" disabled value="<?php echo $tranche->getAgeMini()?>">
         </div>
         <div class="mb-3">
             <label for="agemax" class="form-label">Age Maximum : </label>
-            <input type="text" class="form-control" id="agemax" name="agemax" disabled>
+            <input type="text" class="form-control" id="agemax" name="agemax" disabled value="<?php echo $tranche->getAgeMax()?>">
         </div>
         <h1>Jeu</h1>
         <div class="mb-3">
